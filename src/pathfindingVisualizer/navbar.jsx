@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { FiChevronDown, FiHelpCircle } from "react-icons/fi";
+import { FiChevronDown, FiHelpCircle, FiX } from "react-icons/fi";
+import { AiFillSetting } from "react-icons/ai";
 
 const NavBar = (props) => {
   const brand = window.innerWidth > 600 ? "Pathfinding Visualizer" : "Pathfinder";
@@ -7,6 +8,7 @@ const NavBar = (props) => {
   const [isMazeDropdownOpen, setMazeDropdownOpen] = useState(false);
   const [isSpeedDropdownOpen, setSpeedDropdownOpen] = useState(false);
   const [isHelpModalOpen, setHelpModalOpen] = useState(false);
+  const [isSettingsDropdownOpen, setSettingsDropdownOpen] = useState(false);
   const [algorithm, setAlgorithm] = useState("Visualize Algorithm");
   const [pathState, setPathState] = useState(false);
   const [speedState, setSpeedState] = useState("Medium");
@@ -56,6 +58,7 @@ const NavBar = (props) => {
       setAlgorithm("Select an Algorithm!");
     } else {
       setPathState(true);
+      setSettingsDropdownOpen(false);
       if (algorithm === "Visualize Dijkstra") props.visualizeDijkstra();
       else if (algorithm === "Visualize A*") props.visualizeAStar();
       else if (algorithm === "Visualize Greedy BFS") props.visualizeGreedyBFS();
@@ -114,8 +117,8 @@ const NavBar = (props) => {
         <a className="text-white text-xl font-bold" href="/">
           {brand}
         </a>
-        <ul className="flex space-x-4">
-          <li className="relative">
+        <ul className="flex space-x-4 items-center">
+          <li className="relative hidden lg:block">
             <button
               className="bg-white text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none flex items-center"
               type="button"
@@ -185,7 +188,7 @@ const NavBar = (props) => {
               </div>
             )}
           </li>
-          <li className="relative">
+          <li className="relative hidden md:block">
             <button
               className="bg-white text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none flex items-center"
               type="button"
@@ -227,7 +230,7 @@ const NavBar = (props) => {
               </div>
             )}
           </li>
-          <li>
+          <li className="hidden md:block">
             <button
               type="button"
               className="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600"
@@ -236,7 +239,7 @@ const NavBar = (props) => {
               {algorithm}
             </button>
           </li>
-          <li>
+          <li className="hidden md:block">
             <button
               type="button"
               className="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600"
@@ -245,7 +248,7 @@ const NavBar = (props) => {
               Clear Grid
             </button>
           </li>
-          <li className="relative">
+          <li className="relative hidden md:block">
             <button
               className="bg-white text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none flex items-center"
               type="button"
@@ -280,7 +283,7 @@ const NavBar = (props) => {
               </div>
             )}
           </li>
-          <li>
+          <li className="hidden md:block">
             <button
               type="button"
               className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 flex items-center"
@@ -290,11 +293,187 @@ const NavBar = (props) => {
               Help
             </button>
           </li>
+          <li className="flex-none relative md:hidden">
+            <button
+              className="text-2xl bg-white text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none flex items-center"
+              type="button"
+              onClick={() => setSettingsDropdownOpen(!isSettingsDropdownOpen)}
+            >
+              {isSettingsDropdownOpen ? <FiX /> : <AiFillSetting />}
+            </button>
+            {isSettingsDropdownOpen && (
+              <div className="absolute right-0 mt-2 w-48 bg-white border rounded shadow-lg z-10">
+                <button
+                  className="flex w-full text-left px-4 py-2 hover:bg-gray-200"
+                  type="button"
+                  onClick={() => setAlgorithmDropdownOpen(!isAlgorithmDropdownOpen)}
+                >
+                  Algorithms
+                  <FiChevronDown className="ml-auto my-auto" />
+                </button>
+                {isAlgorithmDropdownOpen && (
+                  <div className="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg z-10">
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() => selectAlgorithm("Visualize Dijkstra")}
+                    >
+                      Dijkstra's Algorithm
+                    </button>
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() => selectAlgorithm("Visualize A*")}
+                    >
+                      A* Algorithm
+                    </button>
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() => selectAlgorithm("Visualize Greedy BFS")}
+                    >
+                      Greedy Best First Search
+                    </button>
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() =>
+                        selectAlgorithm("Visualize Bidirectional Greedy")
+                      }
+                    >
+                      Bidirectional Greedy Search
+                    </button>
+                    <div className="border-t my-2"></div>
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() =>
+                        selectAlgorithm("Visualize Breadth First Search")
+                      }
+                    >
+                      Breadth First Search
+                    </button>
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() =>
+                        selectAlgorithm("Visualize Depth First Search")
+                      }
+                    >
+                      Depth First Search
+                    </button>
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() => selectAlgorithm("Visualize Random Walk")}
+                    >
+                      Random Walk
+                    </button>
+                  </div>
+                )}
+                <button
+                  className="flex w-full text-left px-4 py-2 hover:bg-gray-200"
+                  type="button"
+                  onClick={() => setMazeDropdownOpen(!isMazeDropdownOpen)}
+                >
+                  Mazes
+                  <FiChevronDown className="ml-auto my-auto" />
+                </button>
+                {isMazeDropdownOpen && (
+                  <div className="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg z-10">
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() => selectMaze("Generate Random Maze")}
+                    >
+                      Random Maze
+                    </button>
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() => selectMaze("Generate Recursive Maze")}
+                    >
+                      Recursive Division Maze
+                    </button>
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() => selectMaze("Generate Vertical Maze")}
+                    >
+                      Vertical Division Maze
+                    </button>
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() => selectMaze("Generate Horizontal Maze")}
+                    >
+                      Horizontal Division Maze
+                    </button>
+                  </div>
+                )}
+                <button
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                  type="button"
+                  onClick={() => visualizeAlgorithm()}
+                >
+                  {algorithm}
+                </button>
+                <button
+                  className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                  type="button"
+                  onClick={() => clearGrid()}
+                >
+                  Clear Grid
+                </button>
+                <button
+                  className="flex w-full text-left px-4 py-2 hover:bg-gray-200"
+                  type="button"
+                  onClick={() => setSpeedDropdownOpen(!isSpeedDropdownOpen)}
+                >
+                  Speed: {speedState}
+                  <FiChevronDown className="ml-auto my-auto" />
+                </button>
+                {isSpeedDropdownOpen && (
+                  <div className="absolute left-0 mt-2 w-48 bg-white border rounded shadow-lg z-10">
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() => changeSpeed("Fast")}
+                    >
+                      Fast
+                    </button>
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() => changeSpeed("Medium")}
+                    >
+                      Medium
+                    </button>
+                    <button
+                      className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                      type="button"
+                      onClick={() => changeSpeed("Slow")}
+                    >
+                      Slow
+                    </button>
+                  </div>
+                )}
+                <button
+                  className="flex w-full text-left px-4 py-2 hover:bg-gray-200"
+                  type="button"
+                  onClick={() => setHelpModalOpen(true)}
+                >
+                  <FiHelpCircle className="mr-2 my-auto" />
+                  Help
+                </button>
+              </div>
+            )}
+          </li>
         </ul>
       </div>
       {isHelpModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm border-[#1C2833] border-2 w-full">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm border-[#1C2833] border-2 w-11/12 md:w-full">
             <h2 className="text-lg font-bold mb-4">How to Use the App</h2>
             <p className="mb-4">Click and drag to change the position of the start or end node.</p>
             <p className="mb-4">Click and hover to add walls to build a custom maze.</p>
