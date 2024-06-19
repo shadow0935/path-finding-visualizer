@@ -26,6 +26,11 @@ This project is a React+vite application that visualizes various pathfinding alg
 6. **Depth First Search**: Explores as far as possible along each branch before backtracking.
 7. **Random Walk**: Moves randomly from node to node.
 
+## Tech Stack
+
+- **ReactJS**
+- **Tailwind CSS**
+
 ## Installation
 
 ```bash
