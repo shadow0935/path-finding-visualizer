@@ -114,7 +114,7 @@ const NavBar = (props) => {
   return (
     <nav className="bg-gray-800 p-4 top-0 w-full z-50">
       <div className="container mx-auto flex justify-between items-center">
-        <a className="text-white text-xl font-bold" href="/">
+        <a className="text-white text-xl font-bold" href="https://github.com/shadow0935/path-finding-visualizer">
           {brand}
         </a>
         <ul className="flex space-x-4 items-center">
