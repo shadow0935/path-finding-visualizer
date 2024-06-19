@@ -112,7 +112,7 @@ const NavBar = (props) => {
   };
 
   return (
-    <nav className="bg-gray-800 p-4 top-0 w-full z-50">
+    <nav className="bg-primary p-4 top-0 w-full z-50">
       <div className="container mx-auto flex justify-between items-center">
         <a className="text-white text-xl font-bold" href="https://github.com/shadow0935/path-finding-visualizer">
           {brand}
@@ -120,7 +120,7 @@ const NavBar = (props) => {
         <ul className="flex space-x-4 items-center">
           <li className="relative hidden lg:block">
             <button
-              className="bg-white text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none flex items-center"
+              className="bg-white text-primary py-2 px-4 rounded hover:bg-gray-200 focus:outline-none flex items-center"
               type="button"
               onClick={() => setAlgorithmDropdownOpen(!isAlgorithmDropdownOpen)}
             >
@@ -188,9 +188,9 @@ const NavBar = (props) => {
               </div>
             )}
           </li>
-          <li className="relative hidden md:block">
+          <li className="relative hidden lg:block">
             <button
-              className="bg-white text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none flex items-center"
+              className="bg-white text-primary py-2 px-4 rounded hover:bg-gray-200 focus:outline-none flex items-center"
               type="button"
               onClick={() => setMazeDropdownOpen(!isMazeDropdownOpen)}
             >
@@ -248,9 +248,9 @@ const NavBar = (props) => {
               Clear Grid
             </button>
           </li>
-          <li className="relative hidden md:block">
+          <li className="relative hidden lg:block">
             <button
-              className="bg-white text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none flex items-center"
+              className="bg-white text-primary py-2 px-4 rounded hover:bg-gray-200 focus:outline-none flex items-center"
               type="button"
               onClick={() => setSpeedDropdownOpen(!isSpeedDropdownOpen)}
             >
@@ -283,7 +283,7 @@ const NavBar = (props) => {
               </div>
             )}
           </li>
-          <li className="hidden md:block">
+          <li className="hidden lg:block">
             <button
               type="button"
               className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 flex items-center"
@@ -293,9 +293,9 @@ const NavBar = (props) => {
               Help
             </button>
           </li>
-          <li className="flex-none relative md:hidden">
+          <li className="lg:hidden block">
             <button
-              className="text-2xl bg-white text-black py-2 px-4 rounded hover:bg-gray-200 focus:outline-none flex items-center"
+              className="text-2xl bg-white text-primary py-2 px-4 rounded hover:bg-gray-200 focus:outline-none flex items-center"
               type="button"
               onClick={() => setSettingsDropdownOpen(!isSettingsDropdownOpen)}
             >
@@ -412,14 +412,14 @@ const NavBar = (props) => {
                   </div>
                 )}
                 <button
-                  className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                  className="block w-full text-left px-4 py-2 font-bold border-2 border-gray-300 bg-gray-100 text-primary hover:bg-gray-200 md:hidden transition duration-300"
                   type="button"
                   onClick={() => visualizeAlgorithm()}
                 >
                   {algorithm}
                 </button>
                 <button
-                  className="block w-full text-left px-4 py-2 hover:bg-gray-200"
+                  className="block w-full text-left px-4 py-2 font-bold border-2 border-gray-300 bg-gray-100 text-primary hover:bg-gray-200 md:hidden transition duration-300"
                   type="button"
                   onClick={() => clearGrid()}
                 >
@@ -473,7 +473,7 @@ const NavBar = (props) => {
       </div>
       {isHelpModalOpen && (
         <div className="fixed inset-0 flex items-center justify-center z-50">
-          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm border-[#1C2833] border-2 w-11/12 md:w-full">
+          <div className="bg-white p-6 rounded-lg shadow-lg max-w-sm border-primary border-2 w-11/12 md:w-full">
             <h2 className="text-lg font-bold mb-4">How to Use the App</h2>
             <p className="mb-4">Click and drag to change the position of the start or end node.</p>
             <p className="mb-4">Click and hover to add walls to build a custom maze.</p>
