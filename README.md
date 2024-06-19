@@ -1,4 +1,4 @@
-# Pathfinding Visualizer App
+# Path Finding Visualizer
 
 This project is a React+vite application that visualizes various pathfinding algorithms. It allows users to create custom mazes, select different algorithms, and visualize the pathfinding process.
 
