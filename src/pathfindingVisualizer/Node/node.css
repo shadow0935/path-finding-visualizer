@@ -1,0 +1,137 @@
+.node {
+  width: var(--width);
+  height: var(--height);
+  border: 1px solid rgb(175, 216, 248);
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.node-start {
+  background-color: #1bc824;
+}
+
+.node-finish {
+  background-color: rgb(239 68 68);
+}
+
+.icon-start,
+.icon-finish {
+  position: absolute;
+  /* font-size: 2em; */
+  color: white;
+}
+
+.node-finish-reached {
+  animation: finishVisitedAnimation 1.5s ease-out forwards;
+}
+
+.node-wall {
+  background-color: #1C2833;
+  border: 1px solid #1C2833;
+}
+
+.node-wall-animated {
+  background-color: #1C2833;
+  border: 1px solid #1C2833;
+  animation: wallAnimation 0.5s ease-out forwards;
+}
+
+.node-visited {
+  animation: visitedAnimation 1s ease-out forwards;
+}
+
+.node-shortest-path {
+  animation: shortestPathAnimation 1s ease-out forwards;
+}
+
+@keyframes wallAnimation {
+  0% {
+    transform: scale(0.4);
+    background-color: #1C2833;
+    border-radius: 30%;
+  }
+  50% {
+    transform: scale(0.6);
+    background-color: #1C2833;
+    border-radius: 20%;
+  }
+  75% {
+    transform: scale(0.8);
+    background-color: #1C2833;
+    border-radius: 10%;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #1C2833;
+    border: 1px solid #1C2833;
+  }
+}
+
+@keyframes visitedAnimation {
+  0% {
+    transform: scale(0.3);
+    background-color: #5DADE2;
+    border-radius: 100%;
+  }
+  50% {
+    transform: scale(0.5);
+    background-color: #3498DB;
+    border-radius: 75%;
+  }
+  75% {
+    transform: scale(0.7);
+    background-color: #2980B9;
+    border-radius: 50%;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #1ABC9C;
+  }
+}
+
+@keyframes shortestPathAnimation {
+  0% {
+    transform: scale(0.3);
+    background-color: #f65321;
+    border-radius: 100%;
+  }
+  50% {
+    transform: scale(0.5);
+    background-color: #FF7043;
+    border-radius: 75%;
+  }
+  75% {
+    transform: scale(0.7);
+    background-color: #FF8C00;
+    border-radius: 50%;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #FFA500;
+  }
+}
+
+@keyframes finishVisitedAnimation {
+  0% {
+    transform: scale(0.5);
+    background-color: #EF5350;
+    border-radius: 50%;
+  }
+  50% {
+    transform: scale(0.8);
+    background-color: #E57373;
+    border-radius: 25%;
+  }
+  75% {
+    transform: scale(1.2);
+    background-color: #EF5350;
+    border-radius: 20%;
+  }
+  100% {
+    transform: scale(1);
+    background-color: #F44336;
+  }
+}
