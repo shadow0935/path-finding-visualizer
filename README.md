@@ -34,7 +34,7 @@ cd path-finding-visualizer
 npm install
 ```
 
--To Run the Application Locally
+- To Run the Application Locally
 ```bash
 npm run dev
 ```
